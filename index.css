@@ -51,6 +51,42 @@
   --container-width: 1200px;
 }
 
+/* Light Theme Override — activated via [data-theme="light"] on <html> */
+[data-theme="light"] {
+  --bg-primary: hsl(40, 45%, 97%);
+  --bg-secondary: hsl(40, 40%, 94%);
+  --bg-tertiary: hsl(38, 35%, 90%);
+
+  --text-primary: hsl(230, 20%, 12%);
+  --text-secondary: hsl(230, 10%, 35%);
+  --text-muted: hsl(230, 8%, 52%);
+
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-hover: rgba(0, 0, 0, 0.16);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] body {
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+[data-theme="light"] .glow-1,
+[data-theme="light"] .glow-2,
+[data-theme="light"] .glow-3 {
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+}
+
+[data-theme="light"] .header {
+  background: rgba(255, 250, 240, 0.6);
+}
+
+[data-theme="light"] .hero-visual-lines {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
 /* Color variables are fixed to a premium aurora theme */
 
 /* CSS Reset */

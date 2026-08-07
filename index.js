@@ -3,12 +3,48 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initMobileMenu();
   initScrollReveal();
   initCardTilt();
   initFormValidation();
   initScrollProgress();
 });
+
+/**
+ * 1a. Dark / Light Theme Toggle
+ */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  const moonIcon = document.getElementById('theme-icon-moon');
+  const sunIcon = document.getElementById('theme-icon-sun');
+  if (!toggleBtn) return;
+
+  const applyTheme = (theme) => {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      moonIcon.style.display = 'none';
+      sunIcon.style.display = 'block';
+      toggleBtn.classList.add('active');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      moonIcon.style.display = 'block';
+      sunIcon.style.display = 'none';
+      toggleBtn.classList.remove('active');
+    }
+  };
+
+  const saved = localStorage.getItem('portfolio-theme');
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  applyTheme(saved || (prefersLight ? 'light' : 'dark'));
+
+  toggleBtn.addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const next = isLight ? 'dark' : 'light';
+    applyTheme(next);
+    localStorage.setItem('portfolio-theme', next);
+  });
+}
 
 /**
  * 1b. Scroll Progress Bar
